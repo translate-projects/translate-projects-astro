@@ -2,7 +2,7 @@
 
 Translate the i18n JSON files of your Astro site with [Translate Projects](https://translateprojects.dev). Write your texts in one language, run one command, and get every other language in the folder layout `i18next` expects (`public/locales/<lang>/translation.json`).
 
-[See documentation](https://translateprojects.neiderruiz.com/docs/frameworks-javascript/astro/)
+[See documentation](https://doc.translateprojects.dev/docs/frameworks-javascript/astro)
 
 ## Quick reference
 
