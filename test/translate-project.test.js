@@ -109,6 +109,28 @@ test('extracts the texts, sends them once and writes every language', async (t) 
   assert.ok(!('Inscribe a tu equipo' in sync.body));
 });
 
+test('files in subfolders keep their path in every language', async (t) => {
+  const api = await startMockApi();
+  t.after(() => api.close());
+  const dir = makeSite();
+  fs.mkdirSync(path.join(dir, 'public/locales/es/blog'));
+  fs.writeFileSync(
+    path.join(dir, 'public/locales/es/blog/translation.json'),
+    JSON.stringify({ post: 'Mi primer post' })
+  );
+
+  const { code, output } = await run(dir, api.url);
+
+  assert.strictEqual(code, 0, output);
+  assert.deepStrictEqual(readLang(dir, 'en'), translated('en'));
+  assert.deepStrictEqual(
+    JSON.parse(
+      fs.readFileSync(path.join(dir, 'public/locales/en/blog/translation.json'))
+    ),
+    { post: '[en] Mi primer post' }
+  );
+});
+
 test('a second run with no changes translates nothing and restores deleted files', async (t) => {
   const api = await startMockApi();
   t.after(() => api.close());
@@ -122,6 +144,20 @@ test('a second run with no changes translates nothing and restores deleted files
   assert.strictEqual(api.count('/v1/translations/load-sources'), 1);
   assert.strictEqual(api.count('/v1/translations/'), 1);
   assert.deepStrictEqual(readLang(dir, 'en'), translated('en'));
+});
+
+test('deleting the cache file forces a full translation', async (t) => {
+  const api = await startMockApi();
+  t.after(() => api.close());
+  const dir = makeSite();
+
+  assert.strictEqual((await run(dir, api.url)).code, 0);
+  fs.rmSync(path.join(dir, 'home/.config/translate-projects-core/cache.json'));
+  const second = await run(dir, api.url);
+
+  assert.strictEqual(second.code, 0, second.output);
+  assert.strictEqual(api.count('/v1/translations/load-sources'), 2);
+  assert.strictEqual(api.count('/v1/translations/'), 2);
 });
 
 test('a changed source file is synced and translated again', async (t) => {

@@ -172,7 +172,12 @@ export const translateProject = async ({
           out[k] = picked.translations[keys[k]] ?? flat[k];
         }
 
-        const file = path.join(outputDir, lang, path.basename(item.path));
+        // keeps subfolders: es/blog/post.json -> en/blog/post.json
+        const file = path.join(
+          outputDir,
+          lang,
+          path.relative(sourceDir, item.path)
+        );
         writeJsonAtomic(file, unflattenJson(json, out));
         await Logger.success(`${lang.toUpperCase()} -> ${file}\n`);
       }
