@@ -1,6 +1,0 @@
-export type TypeListLang = 'af' | 'am' | 'ar' | 'as' | 'az' | 'be' | 'bg' | 'bn' | 'bo' | 'bs' | 'ca' | 'ccp' | 'ceb' | 'chr' | 'ckb' | 'co' | 'crk' | 'cs' | 'cy' | 'da' | 'de' | 'dz' | 'el' | 'en' | 'eo' | 'es' | 'et' | 'eu' | 'fa' | 'ff' | 'fi' | 'fil' | 'fr' | 'fy' | 'ga' | 'gd' | 'gl' | 'gu' | 'haw' | 'he' | 'hi' | 'hmn' | 'hr' | 'ht' | 'hu' | 'hy' | 'id' | 'is' | 'it' | 'iu' | 'ja' | 'jv' | 'jw' | 'ka' | 'kk' | 'km' | 'kn' | 'ko' | 'ku' | 'ky' | 'la' | 'lb' | 'lis' | 'lo' | 'lt' | 'lv' | 'mez' | 'mg' | 'mi' | 'mk' | 'ml' | 'mn' | 'mni-Mtei' | 'mr' | 'ms' | 'mt' | 'mul' | 'mul-beng' | 'mul-cyrl' | 'mul-deva' | 'mul-ethi' | 'mul-latn' | 'my' | 'myh' | 'nb' | 'ne' | 'nl' | 'nn' | 'no' | 'nv' | 'ny' | 'oj' | 'one' | 'or' | 'osa' | 'pa' | 'pl' | 'ps' | 'pt-BR' | 'pt-PT' | 'rhg' | 'ro' | 'rom' | 'ru' | 'sa' | 'sd' | 'see' | 'si' | 'sk' | 'sl' | 'sm' | 'sn' | 'so' | 'sq' | 'sr' | 'su' | 'sv' | 'sw' | 'ta' | 'te' | 'tg' | 'th' | 'ti' | 'tl' | 'tr' | 'tt' | 'ug' | 'uk' | 'ur' | 'uz' | 'uzs' | 'vi' | 'win' | 'xh' | 'yi' | 'yo' | 'zh-CN' | 'zh-HK' | 'zh-Hans' | 'zh-Hant' | 'zh-TW' | 'zh-yue' | 'zu';
-export declare const langs: {
-    code: string;
-    name: string;
-    native: string;
-}[];

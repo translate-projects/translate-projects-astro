@@ -1,16 +1,23 @@
 {
-  "name": "@neiderruiz/translate-files",
-  "version": "1.2.2",
-  "description": "Internationalize and manage your website easily with (CSV or JSON to i18n)",
+  "name": "translate-project",
+  "version": "0.0.1",
+  "description": "Internationalize and manage your website easily",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "exports": {
     ".": "./dist/index.js",
-    "./react": "./dist/react/index.js",
-    "./astro": "./dist/astro/index.js",
-    "./next-js": "./dist/next-js/index.js",
-    "./next-js/hooks": "./dist/next-js/hooks/index.js",
-    "./docusaurus": "./dist/docusaurus/index.js"
+    "./utils": "./dist/utils/index.js",
+    "./types": "./dist/utils/index.js"
+  },
+  "typesVersions": {
+    "*": {
+      "utils": [
+        "./dist/utils/index.d.ts"
+      ],
+      "types": [
+        "./dist/types/index.d.ts"
+      ]
+    }
   },
   "scripts": {
     "test": "jest",
@@ -18,25 +25,28 @@
     "build:react": "tsc",
     "build": "npm run build:react && npm run build:babel",
     "start": "node dist/index.js",
-    "prebuild": "rm -rf dist"
+    "prebuild": "rm -rf dist",
+    "lint": "eslint",
+    "format": "prettier --write .",
+    "lint:fix": "eslint --fix",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "**/*.{js,ts,json,md}": [
+      "prettier --write",
+      "eslint --fix"
+    ]
   },
   "keywords": [
-    "translate",
+    "translate project",
+    "translate projects",
     "files",
-    "csv",
     "translate-files",
     "translate-file",
     "translate-file-csv",
-    "i18n",
-    "i18next",
-    "react-i18next",
-    "nextjs translate",
-    "astro translate",
-    "docusaurus translate",
-    "docusaurus i18n",
-    "reactjs i18n",
-    "nextjs i18n",
-    "astro i18n"
+    "nextjs translate project",
+    "astro translate project",
+    "docusaurus translate project"
   ],
   "repository": {
     "type": "git",
@@ -60,13 +70,22 @@
     "@babel/preset-typescript": "^7.23.2",
     "@types/node": "^20.4.5",
     "@types/react": "^18.2.56",
+    "eslint": "^9.20.1",
+    "eslint-config-prettier": "^10.0.1",
+    "eslint-plugin-prettier": "^5.2.3",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.4.3",
+    "prettier": "^3.5.1",
     "typescript": "^4.9.5"
   },
   "dependencies": {
+    "@types/chokidar": "^2.1.7",
     "@types/eventsource": "^1.1.15",
     "@types/i18next": "^13.0.0",
+    "chokidar": "^4.0.3",
     "csvtojson": "^2.0.10",
     "eventsource": "^2.0.2",
-    "react-i18next": "^13.5.0"
+    "react-i18next": "^13.5.0",
+    "translate-projects-core": "file:../core"
   }
 }
