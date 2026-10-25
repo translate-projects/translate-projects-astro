@@ -33,10 +33,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/neiderruiz/translate-files.git"
+    "url": "git+https://github.com/translate-projects/translate-projects-astro.git"
   },
   "bugs": {
-    "url": "http://github.com/neiderruiz/translate-files/issues"
+    "url": "https://github.com/translate-projects/translate-projects-astro/issues"
   },
   "author": {
     "name": "Neider Ruiz",
@@ -60,5 +60,6 @@
     "prettier": "^3.5.1",
     "typescript": "^5.9.3",
     "ws": "^8.18.0"
-  }
+  },
+  "homepage": "https://doc.translateprojects.dev/docs/frameworks-javascript/astro"
 }
